@@ -1,3 +1,8 @@
+<?php
+
+use Illuminate\Http\Request;
+?>
+
 @extends('layout.app')
 @section('title', 'Плани')
 @section('content')
@@ -28,44 +33,56 @@
                 </div>
             </div>
         </section>
-    <div class="plan">
-        <div class="row">
-            <section class="buy_plans">
-                <div class="col-4">
-                    <div class="tile_box">
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="minus">-</div>
-                            </div>
-                            <div class="col-6">
-                                <div class="number">1</div>
-                            </div>
-                            <div class="col-3">
-                                <div class="plus">+</div>
-                            </div>
-                            <div class="col-12">
-                                <div class="device">пристрій</div>
+        <div class="plan">
+            <div class="row">
+                <section class="buy_plans">
+                    <div class="col-4">
+                        <div class="tile_box">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="minus">-</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="number">1</div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="plus">+</div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="device">пристрій</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="tile_box">
-                        <div class="tile_inner_box_green">1128, 00 грн</div>
-                        <div class="years">1 рік</div>
-                        <div class="tile_inner_down_box_green">Купити</div>
+                    <div class="col-4">
+                        <div class="tile_box">
+                            <div class="tile_inner_box_green">1128, 00 грн</div>
+                            <div class="years">1 рік</div>
+
+                            <form action="{{route('createFeedback')}}" class="order" method="POST">
+                                @csrf
+                                <?php
+                                $myRequest = new \Illuminate\Http\Request();
+                                $myRequest->setMethod('POST');
+                                $myRequest->request->add(['foo' => 'bar']);
+                                dd($request->foo);
+                                ?>
+                                <button class="transp" type="submit">
+                                    <div class="tile_inner_down_box_green">Купити</div>
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="tile_box">
-                        <div class="tile_inner_box_orange">1725, 00 грн</div>
-                        <div class="years">2 роки</div>
-                        <div class="tile_inner_down_box_orange">Купити</div>
+                    <div class="col-4">
+                        <div class="tile_box">
+                            <div class="tile_inner_box_orange">1725, 00 грн</div>
+                            <div class="years">2 роки</div>
+                            <div class="tile_inner_down_box_orange">Купити</div>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
-    </div>
     @else
         @component('error')
             Такого плану не існує. <br>

@@ -974,15 +974,15 @@ header .header_in .success:hover {
 }
 
 .about_us .arrow_button {
-  flex-grow: 0;
+/*  flex-grow: 0;*/
   margin-top: 202px;
-  height: 32px;
+/*  height: 32px;
   width: 32px;
   background-color: transparent;
   color: #353945;
   border: 1px solid gray;
   float: right;
-  border-radius: 50%;
+  border-radius: 50%;*/
 }
 
 .about_us .arrow_button a {
@@ -1071,6 +1071,19 @@ header .header_in .success:hover {
   text-decoration-line: none;
   letter-spacing: 0.02em;
 }
+.foot .menu2 {
+    margin-top: 50px;
+    margin-left: 170px;
+    margin-bottom: 35px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    /*line-height: 45px;*/
+    color: #E6E8EC;
+    text-decoration-line: none;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
 
 .foot .contact_text {
   font-family: 'DM Sans', sans-serif;
@@ -1086,6 +1099,71 @@ header .header_in .success:hover {
   font-family: 'Mulish', sans-serif;
   line-height: 25px;
   color: #E6E8EC;
+}
+
+.foot .text_update2 {
+    margin-top: 10px;
+    margin-left: 100px;
+    margin-bottom: 50px;
+    font-size: 14px;
+    font-family: 'Mulish', sans-serif;
+    line-height: 25px;
+    color: #E6E8EC;
+    text-align: center;
+}
+.foot .dark {
+    margin-top: 30px;
+}
+.btn,
+input[type="submit"]{
+    margin-top: 40px;
+    cursor: pointer;
+    border-radius: 0px;
+    text-decoration: none;
+    padding: 12px 18px;
+    font-size: 12px;
+    line-height: 19px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; font-weight:400;
+    letter-spacing: 3px;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-mid {
+    margin-top: 40px;
+    border-radius: 0px;
+    text-decoration: none;
+    padding: 14px 21px;
+    font-size: 13px;
+    line-height: 25px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; font-weight:400;
+    letter-spacing: 3px;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-white{
+    margin-top: 40px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 200;
+    border:solid 2px #fff;
+    background: transparent;
+    color: #fff !important;
+}
+.btn-white:hover{
+    font-family: 'Mulish', sans-serif;
+    font-weight: 600;
+    border:solid 2px #fff;
+    background: #fff;
+    color: #1f1f1f !important;
 }
 
 .footer .posl {
@@ -1209,6 +1287,9 @@ header .header_in .success:hover {
 
 .footer .contact_box {
   margin-left: -50px;
+}
+.footer .image_footer {
+    margin-left: 50px;
 }
 
 .footer .foot_mobile {

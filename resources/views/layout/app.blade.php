@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/catalog.css">
@@ -62,7 +63,7 @@
             </nav>
         </div>
         <a href="#">
-        <button class="button success">Log in</button>
+            <button class="button success">Log in</button>
         </a>
     </div>
     <div class="line"></div>
@@ -132,16 +133,21 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <img src="/img/Badgues%20_3.png" alt="">
+                    <div class="image_footer">
+                        <img src="/img/Badgues%20_3.png" alt="">
+                    </div>
                 </div>
                 <div class="col-4 ">
-                    <a class="menu" href="#">ОНОВЛЕННЯ</a><br>
-                    <div class="text_update">
-                        Тут ми поширюємо всю інформацію<br> пов’язану з нашими проектами.<br>
-                        Залиште тут свій емаіл.
+                    <a class="menu2" href="#">ЗАЛИШТЕ СВІЙ ВІДГУК</a>
+                    <div class="text_update2">
+                        Допоможіть покращити роботу<br>нашого продукту, залиште свій відгук.<br>
+                            <div class="dark">
+                                <a class="btn btn-white btn-mid" href="{{route('createFeedback')}}">White button</a>
+                            </div>
+                        {{--                        <input class="c-form__input" placeholder="E-mail" type="email"--}}
+                        {{--                               pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>--}}
                     </div>
-                    <input class="c-form__input" placeholder="E-mail" type="email"
-                           pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
+
                 </div>
             </div>
         </div>

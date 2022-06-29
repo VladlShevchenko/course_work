@@ -14,8 +14,14 @@ use \App\Http\Controllers\MainController;
 |
 */
 
+//Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/', [MainController::class, 'index'])->name('index');
+
 Route::get('/plans/{id}', [MainController::class, 'plans'])->name('plans');
 Route::get('/faq', [MainController::class, 'faq'])->name('faq');
 Route::get('/createFeedback', [MainController::class, 'createFeedback'])->name('createFeedback');
 Route::post('/createFeedback', [MainController::class, 'createFeedbackPost'])->name('createFeedback');
+Route::post('/updatePrice', [MainController::class, 'updatePrice'])->name('updatePrice');
+
+Route::get('ajaxRequest', [\App\Http\Controllers\HomeController::class, 'ajaxRequest'])->name('ajaxRequest');
+Route::post('ajaxRequest', [\App\Http\Controllers\HomeController::class, 'ajaxRequestPost'])->name('ajaxRequestPost');

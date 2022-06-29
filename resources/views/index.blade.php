@@ -30,17 +30,39 @@
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <button class="arrow_button" id="myBtn">
-                            <a href="#" class="scroll-down" address="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-arrow-down-short" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                          d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
-                                </svg>
-                                <i class="bi bi-arrow-down-short"></i>
-                            </a>
-                        </button>
+                        <a href="#" class="scroll-down" id="scroll_down" address="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                            <i class="bi bi-arrow-down-short"></i>
+                        </a>
                     </div>
+                    <script>
+                        /* begin Scroll Down Button */
+                        (function () {
+                            'use strict';
+
+                            var btnScrollDown = document.querySelector('#scroll_down');
+
+                            function scrollDown() {
+                                var windowCoords = document.documentElement.clientHeight;
+                                (function scroll() {
+                                    if (window.pageYOffset < 1800) {
+                                        window.scrollBy(0, 10);
+                                        setTimeout(scroll, 0);
+                                    }
+                                    if (window.pageYOffset > 1800) {
+                                        window.scrollTo(0, 1500);
+                                    }
+                                })();
+                            }
+
+                            btnScrollDown.addEventListener('click', scrollDown);
+                        })();
+                        /* end Scroll Down Button */
+                    </script>
                 </div>
             </div>
             <div class="about_us_mobile">
@@ -105,7 +127,7 @@
                             А наш новий VPN сервіс захистить Вас від загроз в Інтернеті.</p>
 
                         <div class="about_us_button">
-                            <a href="#">
+                            <a href="./plans/1">
                                 Будь захищений з нами
                             </a>
                         </div>
@@ -128,24 +150,34 @@
                 </div>
             </div>
         </div>
-        <!--    </div>-->
     </section>
     <section class="plans">
-        <!--    <div class="text_about_plans">-->
         <h2>Обери <span class="gold">найкращий план</span> для себе</h2>
 
         <h3 class="grey">У нас є три різні плани антивірусу, кожен із яких підходить для особливих потреб. </h3>
         <div class="row">
             <div class="col-4">
                 <div class="text_and_checkbox">
-                    <p class="text_for_month">Щомісячно</p>
+                    <p class="text_for_month">Щомісячно {{$status}}</p>
+                    <script>
+                        console.log('Глянь, что пришло:', data);
+                    </script>
                 </div>
             </div>
             <div class="col-4">
                 <div class="text_and_checkbox">
                     <label class="toggle-control">
-                        <input type="checkbox" checked="checked">
-                        <span class="control"></span>
+                        <p>{{$status}}</p>
+                        @if(!$status)
+                            Not checked
+                            <input type="checkbox" name="checkix" id="checkix" unchecked>
+                            <span class="control"></span>
+                        @else
+                            Checked
+                            <input type="checkbox" name="checkix" id="checkix" checked>
+                            <span class="control"></span>
+                        @endif
+
                     </label>
                 </div>
             </div>
@@ -294,7 +326,7 @@
 
                 <div class="swipe_box">
                     <a href="{{route('createFeedback')}}">
-                    <img src="/img/icons/clicking%202handsClick.png" alt="">
+                        <img src="/img/icons/clicking%202handsClick.png" alt="">
                     </a>
                     <div class="swipe_text">Свайпніть, щоб пролистати карусель</div>
                 </div>
@@ -302,4 +334,104 @@
         </div>
 
     </section>
+
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>--}}
+    {{--    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>--}}
+    {{--<script>
+        $('input[name="checkix"]').change(function () {
+            // let _token = $('meta[name="csrf-token"]').attr('content');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{route('createFeedback')}}",
+                // headers: { 'X-CSRF-Token': ('meta[name="csrf-token"]').attr('content') },
+                dataType: 'json',
+                type: "POST",
+                data: {
+                    name: "name",
+                    email: "email",
+                    mobile_number: "mobile_number",
+                    message: "message",
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response) {
+                        $('.success').text(response.success);
+                        $("#ajaxform")[0].reset();
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                    $('#nameError').text(response.responseJSON.errors.name);
+                    $('#emailError').text(response.responseJSON.errors.email);
+                    $('#mobileError').text(response.responseJSON.errors.mobile);
+                    $('#messageError').text(response.responseJSON.errors.message);
+                }
+            });
+            //     method: 'GET',
+            //     data: {state: $(this).checked ? 'active' : 'inactive'}
+            //     // data: 1
+            //
+            // })
+            //     .done(function (data) {
+            //         console.log('Глянь, что пришло:', data);
+            //     })
+            //     .error(function () {
+            //         console.log('Всё плохо');
+            //     });
+        })
+    </script>--}}
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+    </script>
+    <script>
+        // jQuery(document).ready(function(){
+        $('input[name="checkix"]').change(function () {
+            // e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            console.log($('input[name="checkix"]').prop('checked'))
+            jQuery.ajax({
+                url: "{{route('updatePrice')}}",
+                method: 'post',
+                data: {
+                    isChecked: $('input[name="checkix"]').prop('checked')
+
+                },
+
+                success: function (result) {
+                    // console.log();
+                    // console.log(result);
+                    document = result;
+                    // console.log(document)
+                    document = result
+                    // document.location.href = '/';
+                    $("body").html(result);
+                    // document.location.href = "";
+                }
+            });
+        });
+        // });
+    </script>
+    <script>
+        $(".btn").click(function () {
+            $(this).toggleClass("active");
+        });
+    </script>
+    <script>
+        function checkBtnClick() {
+            document.getElementById("checkix").checked = true;
+        }
+
+        function uncheckBtnClick() {
+            document.getElementById("checkix").checked = false;
+        }
+    </script>
 @endsection

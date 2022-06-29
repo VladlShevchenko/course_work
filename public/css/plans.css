@@ -83,6 +83,9 @@
   background-color: #FF6838;
   border-radius: 20px 20px 0 0;
 }
+.buy_plans .transp{
+    background: transparent;
+}
 .buy_plans .tile_inner_down_box_green {
   margin-top: 20px;
   font-family: 'DM Sans', sans-serif;

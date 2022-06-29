@@ -9,13 +9,12 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    private $orders = [];
 
     public function index()
     {
         $plans = Plan::all();
         $users = User::all();
-        return view('index', ['plans'=>$plans, 'users'=>$users]);
+        return view('index', ['plans'=>$plans, 'users'=>$users, 'status'=>false]);
     }
     public function plans($id)
     {
@@ -42,6 +41,26 @@ class MainController extends Controller
             "users" => User::all(),
             "feedbacks" => Feedback::all(),
             "status" => true
+        ], 200);
+    }
+    public function updatePrice(Request $request)
+    {
+        $plans = Plan::all();
+        $users = User::all();
+        $status = 1;
+        if($request->isChecked){
+            foreach ($plans as $i=>$plan) {
+                $plan->price *= 5;
+            }
+        }
+        else {
+            $status = 12;
+        }
+        $isChecked = $request->isChecked;
+        return response()->view('index', [
+            'plans' => $plans,
+            'users' => $users,
+            'status' => $status
         ], 200);
     }
 }

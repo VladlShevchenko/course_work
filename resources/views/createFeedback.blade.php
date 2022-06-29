@@ -1,3 +1,4 @@
+<meta name="token" content="{{csrf_token()}}">
 @extends('layout.app')
 @section('title', 'Додаємо відгук')
 @section('content')

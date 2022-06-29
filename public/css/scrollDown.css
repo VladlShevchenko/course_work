@@ -6,9 +6,10 @@
 
 .scroll-down {
   position: absolute;
-  bottom: 30px;
+  /*bottom: 30px;*/
   left: 50%;
   margin-left: -16px;
+  margin-top: 20px;
   display: block;
   width: 32px;
   height: 32px;

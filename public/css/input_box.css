@@ -103,6 +103,7 @@
 }
 
 .c-form__input {
+    margin-left: 100px;
   color: #ffcccc;
   height: 48px;
   width: 256px;
