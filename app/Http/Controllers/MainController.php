@@ -47,14 +47,14 @@ class MainController extends Controller
     {
         $plans = Plan::all();
         $users = User::all();
-        $status = 1;
+        $status = true;
         if($request->isChecked){
             foreach ($plans as $i=>$plan) {
                 $plan->price *= 5;
             }
         }
         else {
-            $status = 12;
+            $status = false;
         }
         $isChecked = $request->isChecked;
         return response()->view('index', [

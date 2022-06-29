@@ -142,7 +142,7 @@
                     <div class="text_update2">
                         Допоможіть покращити роботу<br>нашого продукту, залиште свій відгук.<br>
                             <div class="dark">
-                                <a class="btn btn-white btn-mid" href="{{route('createFeedback')}}">White button</a>
+                                <a class="btn btn-white btn-mid" href="{{route('createFeedback')}}">Відгуки</a>
                             </div>
                         {{--                        <input class="c-form__input" placeholder="E-mail" type="email"--}}
                         {{--                               pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>--}}

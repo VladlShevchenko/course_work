@@ -29,7 +29,7 @@
             </select>
         </div>
         <div class="order_block">
-            <button type="submit">Підтвердити замовлення</button>
+            <button type="submit">Підтвердити</button>
         </div>
     </form>
 @endsection
