@@ -62,10 +62,9 @@ use Illuminate\Http\Request;
                             <form action="{{route('createFeedback')}}" class="order" method="POST">
                                 @csrf
                                 <?php
-                                $myRequest = new \Illuminate\Http\Request();
+                                $myRequest = new Request();
                                 $myRequest->setMethod('POST');
                                 $myRequest->request->add(['foo' => 'bar']);
-                                dd($request->foo);
                                 ?>
                                 <button class="transp" type="submit">
                                     <div class="tile_inner_down_box_green">Купити</div>
